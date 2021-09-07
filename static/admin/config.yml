@@ -14,6 +14,6 @@ collections:
 media_folder: "static/uploads"
 public_folder: "/uploads"
 
-# site_url: https://your-site.com
-# display_url: https://your-site.com
-# logo_url: https://your-site.com/images/logo.svg
+site_url: https://childrens-book.netlify.app
+display_url: https://childrens-book.netlify.app
+logo_url: https://childrens-book.netlify.app/images/logo.svg
