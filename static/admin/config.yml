@@ -15,7 +15,7 @@ collections:
         files: 
             -   name: store
                 label: Store
-                file: "src/lib/data/products.json" 
+                file: "src/lib/data/store.json" 
                 fields: 
                     -   name: products 
                         label: "Products"
