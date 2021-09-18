@@ -1,28 +1,27 @@
-import { mdsvex } from "mdsvex";
-import mdsvexConfig from "./mdsvex.config.js";
+import { mdsvex } from "mdsvex"
+import mdsvexConfig from "./mdsvex.config.js"
 import netlify from "@sveltejs/adapter-netlify"
-import preprocess from 'svelte-preprocess';
+import preprocess from "svelte-preprocess"
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// Consult https://github.com/sveltejs/svelte-preprocess
-	// for more information about preprocessors
-	extensions: [".svelte", ...mdsvexConfig.extensions],
-	preprocess: [
-        mdsvex(mdsvexConfig),
-        preprocess({ "postcss": true }),
-    ],
-	kit: {
-		// hydrate the <div id="svelte"> element in src/app.html
-		target: '#svelte',
+    // Consult https://github.com/sveltejs/svelte-preprocess
+    // for more information about preprocessors
+    extensions: [".svelte", ...mdsvexConfig.extensions],
+    preprocess: [
+        mdsvex(mdsvexConfig), 
+        preprocess({ postcss: true })],
+    kit: {
+        // hydrate the <div id="svelte"> element in src/app.html
+        target: "#svelte",
         adapter: netlify(),
-		prerender: {
-			crawl: true,
-			enabled: true,
-			onError: 'continue',
-			pages: ['*'],
-		},
-	},
-};
+        prerender: {
+            crawl: true,
+            enabled: true,
+            onError: "continue",
+            pages: ["*"]
+        }
+    }
+}
 
-export default config;
+export default config

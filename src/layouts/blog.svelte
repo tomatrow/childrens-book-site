@@ -1,5 +1,5 @@
-<script lang="ts">    
-    export let title: string
+<script>    
+    export let title
 </script>
 
 <svelte:head>

@@ -10,18 +10,18 @@ collections:
             -   name: title
             -   name: body
                 widget: markdown
-    -   name: store
+    -   name: general
         label: "General Configuration"
         files: 
-            -   name: products
-                label: Products
+            -   name: store
+                label: Store
                 file: "src/lib/data/products.json" 
                 fields: 
-                    -   name: list 
-                        label: "List"
+                    -   name: products 
+                        label: "Products"
                         widget: list
                         fields: 
-                            - { label: "API ID", name: api_id, widget: string }
+                            - { label: "API ID", name: apiId, widget: string }
             
 
 media_folder: "static/uploads"
