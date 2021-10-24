@@ -1,28 +1,29 @@
 backend:
     name: git-gateway
     branch: master
+
+local_backend: true
+
 collections:
-    -   name: blog
-        label: "Blog Posts"
-        folder: src/routes/blog
-        create: true
-        fields:
-            -   name: title
-            -   name: body
-                widget: markdown
-    -   name: general
-        label: "General Configuration"
-        files: 
-            -   name: store
-                label: Store
-                file: "src/lib/data/store.json" 
-                fields: 
-                    -   name: products 
-                        label: "Products"
-                        widget: list
-                        fields: 
-                            - { label: "API ID", name: apiId, widget: string }
-            
+    - name: blog
+      label: "Blog Posts"
+      folder: src/routes/blog
+      create: true
+      fields:
+          - name: title
+          - name: body
+            widget: markdown
+    - name: products
+      label: "Products"
+      label_singular: "Product"
+      folder: "src/lib/data/products"
+      create: true
+      identifier_field: "id"
+      format: "json"
+      fields:
+          - { label: "API Product ID", name: id, widget: string }
+          - { label: "Product Handle", name: handle, widget: string }
+          - { label: "Body", name: body, widget: markdown }
 
 media_folder: "static/uploads"
 public_folder: "/uploads"

@@ -1,0 +1,51 @@
+@keyframes shine {
+    to {
+        left: -200%;
+    }
+}
+
+@keyframes auto-shine {
+    0%,
+    85% {
+        left: 150%;
+    }
+    100% {
+        left: -200%;
+    }
+}
+
+.auto-shine:hover .shine:after {
+    animation-iteration-count: infinite;
+    animation-name: auto-shine;
+    animation-duration: 8s;
+}
+
+.shine {
+    position: relative;
+    overflow-x: hidden;
+    &:hover:after {
+        animation-delay: 0s;
+        animation-name: shine !important;
+        animation-duration: 1s !important;
+        animation-iteration-count: 1 !important;
+    }
+    &:after {
+        content: "";
+        position: absolute;
+        animation-delay: 0.5s;
+        animation-duration: 1s;
+        animation-timing-function: cubic-bezier(0.48, 0.15, 0.61, 1.06);
+        animation-name: shine;
+        top: 0;
+        left: 150%;
+        width: 200%;
+        height: 100%;
+        transform: skewX(-20deg);
+        background-image: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.33),
+            transparent
+        );
+    }
+}

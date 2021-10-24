@@ -1,10 +1,36 @@
+const fs = require("fs")
+
+const colors = JSON.parse(fs.readFileSync("./src/lib/data/colors.json"))
+
+function prefixColors(prefix) {
+    return Object.keys(colors).map(color => `${prefix}${color}`)
+}
+
+const safelist = [
+    ...prefixColors("bg-"),
+    ...prefixColors("hover:bg-"),
+    ...prefixColors("border-"),
+    ...prefixColors("text-")
+]
+
 const config = {
     mode: "jit",
-    purge: ["./src/**/*.{html,js,svelte,ts}"],
-    theme: {
-        extend: {}
+    purge: {
+        content: ["./src/**/*.{html,js,svelte,ts}"],
+        safelist
     },
-    plugins: []
+    theme: {
+        extend: {
+            colors,
+            screens: {
+                desktop: "1000px"
+            },
+            letterSpacing: {
+                ultra: "0.3rem"
+            }
+        }
+    },
+    plugins: [require("@tailwindcss/typography")]
 }
 
 module.exports = config
