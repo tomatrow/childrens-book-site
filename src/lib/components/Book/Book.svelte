@@ -1,36 +1,53 @@
-<script lang="ts">
-    // should have a w/h ratio 
-    // width is 100%
-    // thickness of side is by content 
+<script lang="ts">    
     let clazz = ""
     export { clazz as class }
-    
     export let flip = false
+    export let open = false
 </script>
 
-<section class="book" class:flip>
-    <div class="front">
-        <slot name="front" />
+<section class="jacket {clazz}">
+    <div class="book" class:flip class:open>
+    	<div class="spine">
+            <slot name="spine" />
+    	</div>
+    	<div class="back">
+            <div class="back-cover">
+                <slot name="back-cover" />
+            </div>
+            <div class="back-endpaper">
+                <slot name="back-endpaper" />
+            </div>
+    	</div>
+        {#if $$slots.default}
+            <div class="pages">
+                <slot />
+            </div>
+        {/if}
+        <div class="front">
+            <div class="front-endpaper">
+                <slot name="front-endpaper" />
+            </div>
+            <div class="front-cover">
+                <slot name="front-cover" />
+            </div>
+        </div>
+        <!-- <div class="head">
+            <slot name="head" />
+        </div>
+        <div class="tail">
+            <slot name="tail" />
+        </div> -->
     </div>
-	<div class="left">
-        <slot name="left" />
-	</div>
-	<div class="back">
-        <slot name="back" />
-	</div>
-    
-    
-    
-	<!-- <div class="bk-page">
-        <slot name="page" />
-	</div> -->
-	<!-- <div class="bk-right"/> -->
-	<!-- <div class="bk-top"/> -->
-	<!-- <div class="bk-bottom"><slot name="bottom" /></div> -->
-
 </section>
 
 <style global lang="postcss">
+    .jacket {
+        --default-perspective: 1800px;
+        --resolved-perspective: var(--perspective, var(--default-perspective));
+        perspective: var(--resolved-perspective);
+        perspective-origin: bottom left;
+    }
+
     .book {
     	--default-thickness: 2.5rem;
         --default-aspect: 1;
@@ -38,104 +55,113 @@
         --resolved-aspect-h: var(--aspect-h, var(--default-aspect));
         --resolved-aspect-w: var(--aspect-w, var(--default-aspect));
         --resolved-thickness: var(--thickness, var(--default-thickness));
-        
+
         --aspect-ratio: var(--resolved-aspect-h)/var(--resolved-aspect-w);
-        
-        position: relative;
+
+        @apply relative;
+
         padding-bottom: calc(var(--aspect-ratio) * 100%);
     	transform-style: preserve-3d;
     	transition: transform .5s;
-        &:hover {
-        	transform: rotate3d(0,1,0,35deg);
+
+
+        & > * {
+            @apply absolute inset-0 w-full h-full;
         }
-        
-        &.flip {
-            transform: translate3d(0,0,0px) rotate3d(0,1,0,180deg);
+
+        &.open {
+            transform: translate3d(0,0,4rem);
+            .front {
+            	transform: translate3d(0,0,calc(var(--resolved-thickness) / 2)) rotate3d(0,1,0,-160deg);
+            }
+        }
+
+        &:not(.open) {
+            &:hover {
+            	transform: rotate3d(0,1,0,35deg);
+            }
+            &.flip {
+                transform: translate3d(0,0,0px) rotate3d(0,1,0,180deg);
+            }
         }
     }
     
+    .pages {
+    	/* transform: translate3d(0,0,calc(var(--resolved-thickness)/2) - 1px); */
+        backface-visibility: hidden;
+        pointer-events: none;
+        
+        .page {
+            @apply absolute inset-0;
+            transform-style: preserve-3d;
+        	transform-origin: 0% 50%;
+        	transition: transform .5s;
+        	transform: translate3d(0,0,calc(var(--resolved-thickness)/2));
+            z-index: calc(var(--length) - var(--index));
+            
+            &.turned {
+                transform: translate3d(0,0,calc(var(--resolved-thickness)/2)) rotate3d(0,1,0,calc(1deg * (-160 + var(--index))));
+            }
+            &-front, &-back {
+                @apply absolute inset-0;
+                backface-visibility: hidden;
+                transform-style: preserve-3d;
+                pointer-events: auto;
+            }
+            &-front {
+                z-index: -1;
+            }
+            &-back {
+                z-index: 1;
+                transform: rotate3d(0,1,0,-180deg);
+            }
+        }
+    }
+
+    .front, .back {
+        &-cover, &-endpaper {
+            @apply absolute inset-0;
+            backface-visibility: hidden;
+        }
+        &-cover {
+            /* z-index: 10; */
+        }
+    }
+    
+
     .front {
-        @apply absolute inset-0 w-full h-full;
         transform-style: preserve-3d;
     	transform-origin: 0% 50%;
     	transition: transform .5s;
-    	transform: translate3d(0,0,calc(var(--resolved-thickness) / 2));
-    	z-index: 10;
+    	transform: translate3d(0,0,calc(var(--resolved-thickness)/2));
+        z-index: 100;
+
+        &-cover, &-endpaper {
+            /* @apply z-0; */
+        }
+
+        &-endpaper {
+            transform: rotate3d(0,1,0,-179deg);
+        }
     }
 
     .back {
-        @apply absolute inset-0 w-full h-full;
-    	transform: rotate3d(0,1,0,-180deg) translate3d(0,0,20px);
+        /* z-index: 0; */
+        .back-cover {
+            transform: rotate3d(0,1,0,-180deg) translate3d(0,0,calc(var(--resolved-thickness)/2));
+        }
     }
 
-    .left {
-        @apply absolute inset-0 origin-top-left;
+    .spine {
+        @apply origin-top-left;
     	transform: rotate3d(0,1,0,-90deg);
-        
+        overflow: hidden;
+        pointer-events: none;
+
         & > * {
             @apply inset-0 origin-top-left;
             width: calc(100% * var(--aspect-ratio));
-            transform: rotate(90deg) translateY(calc((-1/2)*var(--resolved-thickness)));
+            transform: rotate(90deg) translateY(calc(-1*var(--resolved-thickness)/2));
         }
     }
-    
-    
-    /* .bk-cover-back {
-    	transform: rotate3d(0,1,0,-179deg);
-    } */
-
-    /* .bk-page {
-    	transform: translate3d(0,0,19px);
-    	display: none;
-    	width: 295px;
-    	height: 390px;
-    	top: 5px;
-    	backface-visibility: hidden;
-    	z-index: 9;
-    } */
-    
-    /* .bk-front,
-    .bk-back,
-    .bk-front > div {
-    	width: 300px;
-    	height: 400px;
-    } */
-    
-    /* .bk-left,
-    .bk-right {
-    	width: 40px;
-    	left: -20px;
-    } */
-    
-    /* .bk-top,
-    .bk-bottom {
-    	width: 100%;
-    	height: 40px;
-    	top: -15px;
-    	backface-visibility: hidden;
-    } */
-    
-    /* .bk-back {
-    	transform: rotate3d(0,1,0,-180deg) translate3d(0,0,20px);
-    	box-shadow: 10px 10px 30px rgba(0,0,0,0.3);
-    	border-radius: 3px 0 0 3px;
-    } */
-    
-
-    /* .bk-right {
-    	height: 390px;
-    	top: 5px;
-    	transform: rotate3d(0,1,0,90deg) translate3d(0,0,295px);
-    	backface-visibility: hidden;
-    } */
-    
-
-    
-    /* .bk-top {
-    	transform: rotate3d(1,0,0,90deg);
-    } */
-    
-    /* .bk-bottom {
-    	transform: rotate3d(1,0,0,-90deg) translate3d(0,0,390px);
-    } */
 </style>

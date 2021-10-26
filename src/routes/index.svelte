@@ -17,53 +17,56 @@
 <script lang="ts">
     import type { Stripe } from "stripe"
     import { Button, Hero, Typeset, Link, Book } from "$lib/components"
-    
+    import { Carousel } from 'renderless-svelte'
+
     export let products: Stripe.Product[]
     let flip: boolean
+    let open: boolean
+    
+    const items = [null, [11,12], null]
+    
+    
+    function prev(index: number, { previous }) {
+        console.log(`prev(${index})`)
+        previous()
+    }
+    function next(index: number, { next }) {
+        console.log(`next(${index})`)
+        next()
+    }
+    
+    function handleEndpaperClick(setIndex) {
+        console.log({ setIndex })
+        open = false
+        flip = true
+        setIndex(0)
+    }
 </script>
 
 <Button class="bg-red-500" on:click={() => flip = !flip}>Flip</Button>
+<Button class="bg-red-500" on:click={() => open = !open}>Open</Button>
+
 <div class="p-16 flex flex-wrap gap-8">
-    <div class="w-96">
-        <Book --aspect-h={9} --aspect-w={16} bind:flip>
-            <h2 slot="front" class="bg-blue-500  flex flex-col items-center justify-center absolute inset-0">
-        		<span>Anthony Burghiss</span>
-        		<span>A Catwork Orange</span>
-        	</h2>
-            <h2 slot="back" class="bg-green-500   flex flex-col items-center justify-center absolute inset-0">
-        		<span>Anthony Burghiss</span>
-        		<span>A Catwork Orange</span>
-                <span>Much back cover text</span>
-        	</h2>
-        	<h2 slot="left" class="bg-red-500 text-center p-2">
-        		<!-- <span>Anthony Burghiss</span> -->
-        		<span>A Catwork Orange</span>
-        	</h2>
-        </Book>
-    </div>
-    <div class="w-96">
-        <Book --aspect-h={2} --aspect-w={1} bind:flip>
-            <h2 slot="front" class="bg-blue-500   flex flex-col items-center justify-center absolute inset-0">
-        		<span>Anthony Burghiss</span>
-        		<span>A Catwork Orange</span>
-        	</h2>
-        	<h2 slot="left" class="bg-red-500 text-center p-2">
-        		<!-- <span>Anthony Burghiss</span> -->
-        		<span>A Catwork Orange</span>
-        	</h2>
-        </Book>
-    </div>
-    <div class="w-96">
-        <Book bind:flip>
-            <h2 slot="front" class="bg-blue-500    flex flex-col items-center justify-center absolute inset-0">
-        		<span>Anthony Burghiss</span>
-        		<span>A Catwork Orange</span>
-        	</h2>
-        	<h2 slot="left" class="bg-red-500 text-center p-2">
-        		<!-- <span>Anthony Burghiss</span> -->
-        		<span>A Catwork Orange</span>
-        	</h2>
-        </Book>
+    <div class="w-[40%] mx-auto transition duraton-425" style="{open ? 'transform: translate(50%, 0)' : ''}">
+        <Carousel {items} let:controls let:currentIndex let:setIndex>
+            <Book bind:flip bind:open  --aspect-h={1080} --aspect-w={1400}>
+                <img class="h-full w-full object-contain" slot="front-cover" src="/images/the-first-noel/front-cover.webp" on:click={() => (open = true)} />
+            	<div slot="spine" class="bg-[#142642] text-[#eea905] text-center w-full inset-0">
+            		The First Noel
+            	</div>
+                <img slot="front-endpaper" class="absolute inset-0" src="/images/the-first-noel/0010.jpg" on:click={() => (open = false)} />
+                <img slot="back-endpaper" class="absolute inset-0" src="/images/the-first-noel/0013.jpg" on:click={() => handleEndpaperClick(setIndex)}>
+                <img slot="back-cover" class="h-full w-full object-contain" src="/images/the-first-noel/back-cover.jpg" on:click={() => (flip = false)} />
+                {#each items as payload, index}
+                    {#if payload}
+                        <div class="page" style="--index: {index}; --length: {items.length}" class:turned={currentIndex >= index}>
+                            <img class="page-back" src="/images/the-first-noel/00{payload[1]}.jpg" on:click={controls.previous} />
+                            <img class="page-front" src="/images/the-first-noel/00{payload[0]}.jpg" on:click={controls.next} />
+                        </div>
+                    {/if}
+                {/each}
+            </Book>
+        </Carousel>
     </div>
 </div>
 
