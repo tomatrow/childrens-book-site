@@ -16,57 +16,33 @@
 
 <script lang="ts">
     import type { Stripe } from "stripe"
-    import { Button, Hero, Typeset, Link, Book } from "$lib/components"
-    import { Carousel } from 'renderless-svelte'
+    import { Button, Hero, Typeset, Link, Book, Page } from "$lib/components"
 
     export let products: Stripe.Product[]
     let flip: boolean
     let open: boolean
-    
-    const items = [null, [11,12], null]
-    
-    
-    function prev(index: number, { previous }) {
-        console.log(`prev(${index})`)
-        previous()
-    }
-    function next(index: number, { next }) {
-        console.log(`next(${index})`)
-        next()
-    }
-    
-    function handleEndpaperClick(setIndex) {
-        console.log({ setIndex })
-        open = false
-        flip = true
-        setIndex(0)
-    }
 </script>
 
 <Button class="bg-red-500" on:click={() => flip = !flip}>Flip</Button>
 <Button class="bg-red-500" on:click={() => open = !open}>Open</Button>
 
 <div class="p-16 flex flex-wrap gap-8">
-    <div class="w-[40%] mx-auto transition duraton-425" style="{open ? 'transform: translate(50%, 0)' : ''}">
-        <Carousel {items} let:controls let:currentIndex let:setIndex>
-            <Book bind:flip bind:open  --aspect-h={1080} --aspect-w={1400}>
-                <img class="h-full w-full object-contain" slot="front-cover" src="/images/the-first-noel/front-cover.webp" on:click={() => (open = true)} />
-            	<div slot="spine" class="bg-[#142642] text-[#eea905] text-center w-full inset-0">
-            		The First Noel
-            	</div>
-                <img slot="front-endpaper" class="absolute inset-0" src="/images/the-first-noel/0010.jpg" on:click={() => (open = false)} />
-                <img slot="back-endpaper" class="absolute inset-0" src="/images/the-first-noel/0013.jpg" on:click={() => handleEndpaperClick(setIndex)}>
-                <img slot="back-cover" class="h-full w-full object-contain" src="/images/the-first-noel/back-cover.jpg" on:click={() => (flip = false)} />
-                {#each items as payload, index}
-                    {#if payload}
-                        <div class="page" style="--index: {index}; --length: {items.length}" class:turned={currentIndex >= index}>
-                            <img class="page-back" src="/images/the-first-noel/00{payload[1]}.jpg" on:click={controls.previous} />
-                            <img class="page-front" src="/images/the-first-noel/00{payload[0]}.jpg" on:click={controls.next} />
-                        </div>
-                    {/if}
-                {/each}
-            </Book>
-        </Carousel>
+    <div class="w-[40%] mx-auto transition duraton-425" style={open ? 'transform: translate(50%, 0)' : ''}>
+        <Book bind:flip bind:open --aspect-h={1080} --aspect-w={1400} --thickness="3rem">
+            <img alt="" slot="front-cover" src="/images/the-first-noel/front-cover.webp" />
+            <img alt="" slot="front-endpaper" src="/images/the-first-noel/0010.jpg" />
+            {#each [[11,12], [13,14], [15,16], [17,18]] as [front, back]}
+                <Page>
+                    <img class="" alt="" slot="page-front" src="/images/the-first-noel/00{front}.jpg" />
+                    <img class="" alt="" slot="page-back" src="/images/the-first-noel/00{back}.jpg" />
+                </Page>
+            {/each}
+            <img alt="" slot="back-endpaper" src="/images/the-first-noel/0019.jpg" />
+            <img alt="" slot="back-cover" src="/images/the-first-noel/back-cover.jpg" />
+        	<div slot="spine" class="bg-[#142642] text-[#eea905] flex items-center justify-center w-full inset-0">
+        		The First Noel
+        	</div>
+        </Book>
     </div>
 </div>
 
