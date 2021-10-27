@@ -12,6 +12,7 @@
         "format": "prettier --write ."
     },
     "devDependencies": {
+        "3d-book-svelte": "^0.0.4",
         "@sveltejs/adapter-netlify": "^1.0.0-next.35",
         "@sveltejs/kit": "next",
         "@tailwindcss/typography": "^0.4.1",

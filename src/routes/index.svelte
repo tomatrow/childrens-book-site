@@ -16,8 +16,9 @@
 
 <script lang="ts">
     import type { Stripe } from "stripe"
-    import { Button, Hero, Typeset, Link, Book, Page } from "$lib/components"
-
+    import { Button, Hero, Typeset, Link } from "$lib/components"
+    import { Book, Page } from "3d-book-svelte"
+    
     export let products: Stripe.Product[]
     let flip: boolean
     let open: boolean

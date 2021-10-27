@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  3d-book-svelte: ^0.0.4
   '@sveltejs/adapter-netlify': ^1.0.0-next.35
   '@sveltejs/kit': next
   '@tailwindcss/typography': ^0.4.1
@@ -28,6 +29,7 @@ specifiers:
   typescript: ^4.4.4
 
 devDependencies:
+  3d-book-svelte: 0.0.4
   '@sveltejs/adapter-netlify': 1.0.0-next.35
   '@sveltejs/kit': 1.0.0-next.190_sass@1.43.4+svelte@3.44.0
   '@tailwindcss/typography': 0.4.1_tailwindcss@2.2.17
@@ -55,6 +57,10 @@ devDependencies:
   typescript: 4.4.4
 
 packages:
+
+  /3d-book-svelte/0.0.4:
+    resolution: {integrity: sha512-VAXoPHYOg2zfRDlcgFvb+N4izEg93QC4fnZCs7maq7UP77piUXVgqNX91W+NpvFynM5JEZ+PRx3cXTHXq1aGyw==}
+    dev: true
 
   /@babel/code-frame/7.15.8:
     resolution: {integrity: sha512-2IAnmn8zbvC/jKYhq5Ki9I+DwjlrtMPUCH/CpHvqI4dNnlwHwsxoIhlc8WcYY5LSYknXQtAlFYuHfqAFCvQ4Wg==}
