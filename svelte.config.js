@@ -2,7 +2,7 @@ import { mdsvex } from "mdsvex"
 import mdsvexConfig from "./mdsvex.config.js"
 import netlify from "@sveltejs/adapter-netlify"
 import preprocess from "svelte-preprocess"
-import Icons from 'unplugin-icons/vite'
+import Icons from "unplugin-icons/vite"
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -20,7 +20,7 @@ const config = {
             onError: "continue"
         },
         vite: {
-            plugins: [Icons({ compiler: 'svelte', autoInstall: true })]
+            plugins: [Icons({ compiler: "svelte", autoInstall: true })]
         }
     }
 }

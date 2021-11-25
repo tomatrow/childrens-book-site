@@ -1,31 +1,24 @@
 <script lang="ts" context="module">
-    import { request } from "$lib/common/request"
+    import { getProducts } from "$lib/common/api"
     import type { Load } from "@sveltejs/kit"
 
-    export const load: Load = async ({ fetch }) => {
-        const products = await request("/api/products.json", { fetch })
-        
+    export const load: Load = async () => {
         return {
             status: 200, 
             props: {
-                products
+                products: await getProducts()
             }
         }
     }
 </script>
 
 <script lang="ts">
-    import type { Stripe } from "stripe"
     import { Button, Hero, Typeset, Link } from "$lib/components"
     import { Book, Page } from "3d-book-svelte"
-    import IconAccessibility from '~icons/carbon/accessibility'
 
-    export let products: Stripe.Product[]
     let flip: boolean
     let open: boolean
 </script>
-
-<IconAccessibility class="h-32 text-red " />
 
 <Button class="bg-red-500" on:click={() => flip = !flip}>Flip</Button>
 <Button class="bg-red-500" on:click={() => open = !open}>Open</Button>

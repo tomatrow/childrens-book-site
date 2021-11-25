@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-    import { serverRequest } from "$lib/common/request"
+    import { serverRequest } from "optional-default-site-kit"
     import type { Load } from "@sveltejs/kit"
     import type { get } from "src/routes/api/products/[handle].json"
 

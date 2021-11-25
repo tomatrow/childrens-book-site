@@ -1,15 +1,12 @@
 <script lang="ts" context="module">
-    import { serverRequest } from "$lib/common/request"
     import type { Load } from "@sveltejs/kit"
-    import type { get } from "src/routes/api/products/index.json"
+    import { getProducts } from "$lib/common/api"
 
-    export const load: Load = async ({ fetch }) => {
-        const products = await serverRequest<typeof get>("/api/products.json", { fetch })
-
+    export const load: Load = async () => {
         return {
             status: 200, 
             props: {
-                products
+                products: await getProducts()
             }
         }
     }
@@ -19,8 +16,6 @@
     import type { MetaProduct } from "$lib/types/models"
 
     export let products: MetaProduct[]
-    
-    $: console.log({ products })
 </script>
 
 <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">

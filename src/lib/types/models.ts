@@ -1,9 +1,12 @@
 import type { Stripe } from "stripe"
 
-export interface Product {
-    id: string
+export interface Route {
     handle: string
     body: string
+}
+
+export interface Product extends Route {
+    id: string
 }
 
 export interface MetaProduct {
@@ -21,4 +24,21 @@ export interface Link {
 export interface Image {
     src: string
     alt?: string
+}
+
+export interface Page extends Route {
+    title: string
+}
+
+export interface Post extends Route {
+    title: string
+}
+
+export interface Collection extends Route {
+    title: string
+    products: string[]
+}
+
+export interface Policy extends Route {
+    title: string
 }
