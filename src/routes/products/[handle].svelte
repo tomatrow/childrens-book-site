@@ -1,15 +1,14 @@
 <script lang="ts" context="module">
-    import { serverRequest } from "optional-default-site-kit"
     import type { Load } from "@sveltejs/kit"
-    import type { get } from "src/routes/api/products/[handle].json"
+    import { getProduct } from "$lib/common/api"
 
-    export const load: Load = async ({ fetch, page }) => {
-        const product = await serverRequest<typeof get>(`/api/products/${page.params.handle}.json`, { fetch })
+    export const load: Load = async ({ page }) => {
+        const metaProduct = await getProduct(page.params.handle)
 
         return {
             status: 200, 
             props: {
-                product
+                metaProduct
             }
         }
     }
@@ -17,12 +16,12 @@
 
 <script lang="ts">
     import type { MetaProduct } from "$lib/types/models"
+    import { micromark } from 'micromark'
 
-    export let product: MetaProduct
-    
-    $: console.log({ product })
+    export let metaProduct: MetaProduct
 </script>
 
-<!-- {#await compile(product.cms.body) then result}
-    {@html result.code}
-{/await} -->
+<h1>{metaProduct.product.name}</h1>
+<div class="prose">
+    {@html micromark(metaProduct.cms.body)}
+</div>

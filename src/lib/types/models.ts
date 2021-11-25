@@ -36,7 +36,7 @@ export interface Post extends Route {
 
 export interface Collection extends Route {
     title: string
-    products: string[]
+    products: Pick<Product, "handle">[]
 }
 
 export interface Policy extends Route {

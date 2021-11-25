@@ -1,10 +1,10 @@
 import type { RequestHandler } from "@sveltejs/kit"
 import type { Locals } from "$lib/types/kit"
-import { readJson } from "./index.json"
+import { getResource } from "../_utility"
 
 export const get: RequestHandler<Locals, unknown, any> = async ({ params }) => {
     return {
         status: 200,
-        body: await readJson(`src/lib/data/${params.resource}/${params.handle}.json`)
+        body: await getResource(params.resource, params.handle)
     }
 }

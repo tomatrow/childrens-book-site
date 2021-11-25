@@ -1,83 +1,66 @@
-import type { EndpointOutput, RequestHandler } from "@sveltejs/kit"
-import { ApolloServer, gql } from "apollo-server-lambda"
+import type { RequestHandler, Response } from "@sveltejs/kit"
+import { getGraphQLParameters } from "graphql-helix/dist/get-graphql-parameters.js"
+import { processRequest } from "graphql-helix/dist/process-request.js"
+import { renderGraphiQL } from "graphql-helix/dist/render-graphiql.js"
+import { shouldRenderGraphiQL } from "graphql-helix/dist/should-render-graphiql.js"
 
-const typeDefs = gql`
-    type Query {
-        hello: String
-    }
-`
+import { createSchema, defaultQuery } from "../graphql/schema"
 
-const resolvers = {
-    Query: {
-        hello: (parent, args, context) => {
-            console.log("hello from resolver")
-            return "Hello, world!"
+const schemaPromise = createSchema()
+
+const respond = async (request): Promise<Response> => {
+    // Workaround for a bug with body parsing in SvelteKit
+    if (typeof request.body === "string") request.body = JSON.parse(request.body)
+
+    if (shouldRenderGraphiQL(request))
+        return {
+            body: renderGraphiQL({
+                defaultQuery
+            }),
+            headers: { "Content-Type": "text/html" },
+            status: 200
         }
-    }
-}
 
-const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    introspection: true
-    // playground: true,
-    // tracing: true,
-    
-})
-
-const graphqlHandler = server.createHandler({
-    expressGetMiddlewareOptions: {
-        cors: {
-            origin: "*",
-            credentials: true,
-        }
-    }
-})
-
-const handler: RequestHandler = async ({ method, headers, path, rawBody }) => {
-        // const text = new TextDecoder().decode(rawBody)
-        // console.log({ text })
-        
-        
-        // const buffer = Buffer.from(rawBody, "utf8")
-        // const s = new String(buffer)
-        // console.log({ s })
-    
-    // return { status: 200 } 
-    
-    const response = await new Promise<EndpointOutput>((resolve, reject) => {
-        const event = {
-            httpMethod: method,
-            headers,
-            path,
-            body: new TextDecoder().decode(rawBody),
-            isBase64Encoded: false,
-            //requestContext: true // mocks an expected value from an aws event// requestContext: true // mocks an expected value from an aws event
-            requestContext: {
-                elb: true
-            }
-        }
-        
-        console.log("starting handler...")
-
-        graphqlHandler(event, {} as any, (error, result) => {
-            console.log({ error, result })
-            
-            if (error) return reject(error)
-
-            resolve({
-                status: result.statusCode,
-                body: result.body,
-                headers: result.headers
-            })
-        })
+    const parameters = getGraphQLParameters(request)
+    const result = await processRequest({
+        ...parameters,
+        // For example, auth information is put in context for the resolver
+        contextFactory: () => ({
+            authorization: request.headers["Authorization"] ?? request.headers["authorization"]
+        }),
+        request,
+        schema: await schemaPromise
     })
-    
-    console.log({ response })
-    
-    return response 
+
+    if (result.type === "RESPONSE") {
+        const headers = {}
+
+        for (const { name, value } of result.headers) {
+            headers[name] = value
+        }
+
+        return {
+            body: result.payload,
+            headers,
+            status: result.status
+        }
+    }
+
+    return {
+        // Think you could help? https://github.com/svelte-add/graphql/issues/1
+        body: "svelte-add/graphql doesn't support multipart responses or event streams",
+        headers: {},
+        status: 501
+    }
 }
 
-export const head = handler
-export const get = handler
-export const post = handler
+export const del: RequestHandler = ({ body, headers, query }) =>
+    respond({ body, headers, method: "DELETE", query })
+export const get: RequestHandler = ({ body, headers, query }) =>
+    respond({ body, headers, method: "GET", query })
+export const head: RequestHandler = ({ body, headers, query }) =>
+    respond({ body, headers, method: "HEAD", query })
+export const post: RequestHandler = ({ body, headers, query }) =>
+    respond({ body, headers, method: "POST", query })
+export const put: RequestHandler = ({ body, headers, query }) =>
+    respond({ body, headers, method: "PUT", query })

@@ -22,6 +22,6 @@
     <h1>All Collections</h1>
     
     {#each collections as {title, handle}}
-        <a href="/pages/{handle}">{title}</a>
+        <a href="/collections/{handle}">{title}</a>
     {/each}
 </section> 
