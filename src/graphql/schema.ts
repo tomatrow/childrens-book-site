@@ -1,24 +1,34 @@
-import { GraphQLInt, GraphQLObjectType, GraphQLSchema } from "graphql"
+import { makeExecutableSchema } from "@graphql-tools/schema"
+import type { IExecutableSchemaDefinition } from "@graphql-tools/schema"
+
+const typeDefs: IExecutableSchemaDefinition["typeDefs"] = `
+    interface Route {
+        handle: String!
+        body: String!
+    }
+    type Page implements Route {
+        title: String!
+    }
+    type Query {
+        double(number: Int!): Int!
+        pages: [Page!]!
+    }
+`
+
+const resolvers: IExecutableSchemaDefinition["resolvers"] = {
+    Query: {
+        double(_, args) {
+            console.log({ args })
+            return args.number * 2 
+        }
+    }
+}
+
 
 export const createSchema = async () => {
-    return new GraphQLSchema({
-        query: new GraphQLObjectType({
-            name: "Query",
-            description: "The main entrypoint to our API",
-            fields: {
-                double: {
-                    args: {
-                        number: { description: "The number to multiply", type: GraphQLInt }
-                    },
-                    description: "Get the number, times two",
-                    type: GraphQLInt,
-                    resolve(_source, { number }) {
-                        // Do what you want with authorization
-                        return number * 2
-                    }
-                }
-            }
-        })
+    return makeExecutableSchema({
+        typeDefs,
+        resolvers
     })
 }
 

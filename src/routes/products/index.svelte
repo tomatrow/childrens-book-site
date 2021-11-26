@@ -20,9 +20,9 @@
 
 <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
     {#each products as { product, cms } (cms.id)}
-        <div class="flex flex-col items-start bg-center bg-cover py-12" style={product.images.length > 0 ? `background-image: url(${product.images[0]})` : ''}>
+        <a href="/products/{cms.handle}" class="flex flex-col items-start bg-center bg-cover py-12" style={product.images.length > 0 ? `background-image: url(${product.images[0]})` : ''}>
             <span>{product.name}</span>
             <span>{product.description}</span>
-        </div>
+        </a>
     {/each}
 </section>

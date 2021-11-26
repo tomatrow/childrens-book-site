@@ -3,7 +3,9 @@ import type * as Product from "src/routes/api/products/[handle].json"
 import type * as Products from "src/routes/api/products/index.json"
 import type * as Resource from "src/routes/api/[resource]/[handle].json"
 import type * as Resources from "src/routes/api/[resource]/index.json"
+import type * as Session from "src/routes/api/checkout/session.json"
 import type { Page, Post, Collection, Policy } from "$lib/types/models"
+import type { Stripe } from "stripe"
 
 export const getBase = () => {
     return import.meta.env.VITE_BASE_URL
@@ -55,4 +57,12 @@ export const getProducts = async () => {
 
 export const getProduct = async (handle: string) => {
     return await serverRequest<typeof Product.get>(getBase() + `/api/products/${handle}.json`)
+}
+
+export const getCheckoutSession = async (lineItems: Stripe.Checkout.SessionCreateParams.LineItem[]) => {
+    return await serverRequest<typeof Session.post>(getBase() + `/api/checkout/session.json`, {
+        body: {
+            lineItems
+        }
+    })
 }

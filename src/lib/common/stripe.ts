@@ -10,8 +10,8 @@ export async function createSessionLink(
         payment_method_types: ["card"],
         line_items,
         mode: "payment",
-        success_url: import.meta.env.FRONTEND_URL + "/checkout/success",
-        cancel_url: import.meta.env.FRONTEND_URL + "/checkout/cancel"
+        success_url: import.meta.env.VITE_BASE_URL + "/checkout/success",
+        cancel_url: import.meta.env.VITE_BASE_URL + "/checkout/cancel"
     })
 
     return session.url
