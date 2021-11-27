@@ -30,7 +30,7 @@ const config = {
             }
         }
     },
-    plugins: [require("@tailwindcss/typography"), require('@tailwindcss/aspect-ratio')]
+    plugins: [require("@tailwindcss/typography"), require("@tailwindcss/aspect-ratio")]
 }
 
 module.exports = config

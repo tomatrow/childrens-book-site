@@ -1,13 +1,9 @@
 {
-  "handle": "cards",
-  "title": "Cards",
-  "image": {
-    "src": "https://source.unsplash.com/featured/?cards"
-  },
-  "products": [
-    "kharbranth",
-    "the-shattered-plains",
-    "the-tower"
-  ],
-  "body": "#"
+    "handle": "cards",
+    "title": "Cards",
+    "image": {
+        "src": "https://source.unsplash.com/featured/?cards"
+    },
+    "products": ["kharbranth", "the-shattered-plains", "the-tower"],
+    "body": "#"
 }

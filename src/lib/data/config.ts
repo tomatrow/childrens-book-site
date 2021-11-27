@@ -132,7 +132,7 @@ export const config = {
                     collection: "products",
                     value_field: "handle",
                     search_fields: ["handle"],
-                    multiple: true, 
+                    multiple: true,
                     min: 1
                 },
                 body()
