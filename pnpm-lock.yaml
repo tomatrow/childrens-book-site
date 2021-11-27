@@ -2,7 +2,6 @@ lockfileVersion: 5.3
 
 specifiers:
   3d-book-svelte: ^0.0.6
-  '@graphql-tools/schema': ^8.3.1
   '@iconify-json/carbon': ^1.0.11
   '@macfja/svelte-persistent-store': ^1.2.0
   '@sveltejs/adapter-netlify': next
@@ -13,10 +12,7 @@ specifiers:
   autoprefixer: ^10.4.0
   color: ^4.0.1
   cssnano: ^5.0.11
-  graphql: ^16.0.1
-  graphql-helix: ^1.10.3
   lodash: ^4.17.21
-  mdsvex: ^0.9.8
   micromark: ^3.0.9
   micromark-extension-gfm: ^2.0.0
   netlify-cms: ^2.10.179
@@ -47,7 +43,6 @@ dependencies:
 
 devDependencies:
   3d-book-svelte: 0.0.6
-  '@graphql-tools/schema': 8.3.1_graphql@16.0.1
   '@iconify-json/carbon': 1.0.11
   '@macfja/svelte-persistent-store': 1.2.0_svelte@3.44.2
   '@sveltejs/adapter-netlify': 1.0.0-next.35
@@ -57,10 +52,7 @@ devDependencies:
   autoprefixer: 10.4.0_postcss@8.4.1
   color: 4.0.1
   cssnano: 5.0.11_postcss@8.4.1
-  graphql: 16.0.1
-  graphql-helix: 1.10.3_graphql@16.0.1
   lodash: 4.17.21
-  mdsvex: 0.9.8_svelte@3.44.2
   micromark: 3.0.9
   netlify-cms: 2.10.179
   optional-default-floaty-sveltekit-theme: 0.0.10
@@ -315,37 +307,6 @@ packages:
 
   /@emotion/weak-memoize/0.2.5:
     resolution: {integrity: sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==}
-    dev: true
-
-  /@graphql-tools/merge/8.2.1_graphql@16.0.1:
-    resolution: {integrity: sha512-Q240kcUszhXiAYudjuJgNuLgy9CryDP3wp83NOZQezfA6h3ByYKU7xI6DiKrdjyVaGpYN3ppUmdj0uf5GaXzMA==}
-    peerDependencies:
-      graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
-    dependencies:
-      '@graphql-tools/utils': 8.5.3_graphql@16.0.1
-      graphql: 16.0.1
-      tslib: 2.3.1
-    dev: true
-
-  /@graphql-tools/schema/8.3.1_graphql@16.0.1:
-    resolution: {integrity: sha512-3R0AJFe715p4GwF067G5i0KCr/XIdvSfDLvTLEiTDQ8V/hwbOHEKHKWlEBHGRQwkG5lwFQlW1aOn7VnlPERnWQ==}
-    peerDependencies:
-      graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
-    dependencies:
-      '@graphql-tools/merge': 8.2.1_graphql@16.0.1
-      '@graphql-tools/utils': 8.5.3_graphql@16.0.1
-      graphql: 16.0.1
-      tslib: 2.3.1
-      value-or-promise: 1.0.11
-    dev: true
-
-  /@graphql-tools/utils/8.5.3_graphql@16.0.1:
-    resolution: {integrity: sha512-HDNGWFVa8QQkoQB0H1lftvaO1X5xUaUDk1zr1qDe0xN1NL0E/CrQdJ5UKLqOvH4hkqVUPxQsyOoAZFkaH6rLHg==}
-    peerDependencies:
-      graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
-    dependencies:
-      graphql: 16.0.1
-      tslib: 2.3.1
     dev: true
 
   /@iarna/toml/2.2.5:
@@ -1862,14 +1823,6 @@ packages:
     resolution: {integrity: sha512-qkIilPUYcNhJpd33n0GBXTB1MMPp14TxEsEs0pTrsSVucApsYzW5V+Q8Qxhik6KU3evy+qkAAowTByymK0avdg==}
     dev: true
 
-  /graphql-helix/1.10.3_graphql@16.0.1:
-    resolution: {integrity: sha512-DBWId8YgIGJQX8isjDoXsEB7qokXtkKRRKvz/f20yvrqnqemw4TQzFTEbtNthFJR8Su6LQmknUUV3eRuPJULTQ==}
-    peerDependencies:
-      graphql: ^15.3.0 || ^16.0.0
-    dependencies:
-      graphql: 16.0.1
-    dev: true
-
   /graphql-tag/2.12.6_graphql@15.7.2:
     resolution: {integrity: sha512-FdSNcu2QQcWnM2VNvSCCDCVS5PpPqpzgFT8+GXzqJuoDd0CBncxCY278u4mhRO7tMgo2JjgJA5aZ+nWSQ/Z+xg==}
     engines: {node: '>=10'}
@@ -1883,11 +1836,6 @@ packages:
   /graphql/15.7.2:
     resolution: {integrity: sha512-AnnKk7hFQFmU/2I9YSQf3xw44ctnSFCfp3zE0N6W174gqe9fWG/2rKaKxROK7CcI3XtERpjEKFqts8o319Kf7A==}
     engines: {node: '>= 10.x'}
-    dev: true
-
-  /graphql/16.0.1:
-    resolution: {integrity: sha512-oPvCuu6dlLdiz8gZupJ47o1clgb72r1u8NDBcQYjcV6G/iEdmE11B1bBlkhXRvV0LisP/SXRFP7tT6AgaTjpzg==}
-    engines: {node: ^12.22.0 || ^14.16.0 || >=16.0.0}
     dev: true
 
   /gray-matter/4.0.3:
@@ -2695,18 +2643,6 @@ packages:
 
   /mdn-data/2.0.14:
     resolution: {integrity: sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow==}
-    dev: true
-
-  /mdsvex/0.9.8_svelte@3.44.2:
-    resolution: {integrity: sha512-5QvThjRKoKkGH00qdHxLZ5ROd80RgGiJvM2B9opeFreaiGFTLoKKFUgEBCslLrwM24cVGJLmIM3rR83OFDf3tQ==}
-    peerDependencies:
-      svelte: 3.x
-    dependencies:
-      '@types/unist': 2.0.6
-      prism-svelte: 0.4.7
-      prismjs: 1.25.0
-      svelte: 3.44.2
-      vfile-message: 2.0.4
     dev: true
 
   /mdurl/1.0.1:
@@ -4485,14 +4421,6 @@ packages:
   /pretty-hrtime/1.0.3:
     resolution: {integrity: sha1-t+PqQkNaTJsnWdmeDyAesZWALuE=}
     engines: {node: '>= 0.8'}
-    dev: true
-
-  /prism-svelte/0.4.7:
-    resolution: {integrity: sha512-yABh19CYbM24V7aS7TuPYRNMqthxwbvx6FF/Rw920YbyBWO3tnyPIqRMgHuSVsLmuHkkBS1Akyof463FVdkeDQ==}
-    dev: true
-
-  /prismjs/1.25.0:
-    resolution: {integrity: sha512-WCjJHl1KEWbnkQom1+SzftbtXMKQoezOCYs5rECqMN+jP+apI7ftoflyqigqzopSO3hMhTEb0mFClA8lkolgEg==}
     dev: true
 
   /process/0.11.10:
@@ -6289,11 +6217,6 @@ packages:
 
   /value-equal/1.0.1:
     resolution: {integrity: sha512-NOJ6JZCAWr0zlxZt+xqCHNTEKOsrks2HQd4MqhP1qy4z1SkbEP467eNx6TgDKXMvUOb+OENfJCZwM+16n7fRfw==}
-    dev: true
-
-  /value-or-promise/1.0.11:
-    resolution: {integrity: sha512-41BrgH+dIbCFXClcSapVs5M6GkENd3gQOJpEfPDNa71LsUGMXDL0jMWpI/Rh7WhX+Aalfz2TTS3Zt5pUsbnhLg==}
-    engines: {node: '>=12'}
     dev: true
 
   /vfile-location/2.0.6:
