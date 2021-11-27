@@ -26,11 +26,17 @@
     import { Main, Primary, PrimaryCompact, Secondary, Navbar } from "optional-default-floaty-sveltekit-theme"
     import { items as primaryMenu } from "$lib/data/primaryMenu.json"
     import { items as secondaryMenu } from "$lib/data/secondaryMenu.json"
+    import netlifyIdentity from "netlify-identity-widget"
+    import { browser } from "$app/env"
     
     export let metaProducts: MetaProduct[]
 
     let visible: boolean
     let open = false
+    
+    if (browser) {
+        netlifyIdentity.init()
+    }
 </script>
 
 <Cart bind:visible {metaProducts} />

@@ -25,6 +25,7 @@
         "lodash": "^4.17.21",
         "micromark": "^3.0.9",
         "netlify-cms": "^2.10.179",
+        "netlify-identity-widget": "^1.9.2",
         "optional-default-floaty-sveltekit-theme": "^0.0.10",
         "optional-default-site-kit": "^0.0.6",
         "postcss": "^8.4.1",
