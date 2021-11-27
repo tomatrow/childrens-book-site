@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-    import "@tomatrow/floaty-svelte-kit-theme/styles.css"
+    import "optional-default-floaty-sveltekit-theme/styles.css"
     import "../app.postcss"    
     import { installFetch } from "optional-default-site-kit/functions/request"
     import type { Load } from "@sveltejs/kit"
@@ -23,7 +23,7 @@
     import { build } from "optional-default-site-kit/functions/build"
     import { Cart, Button } from "$lib/components"
     import type { MetaProduct } from "$lib/types/models"
-    import { Main, Primary, PrimaryCompact, Secondary, Navbar } from "@tomatrow/floaty-svelte-kit-theme"
+    import { Main, Primary, PrimaryCompact, Secondary, Navbar } from "optional-default-floaty-sveltekit-theme"
     import { items as primaryMenu } from "$lib/data/primaryMenu.json"
     import { items as secondaryMenu } from "$lib/data/secondaryMenu.json"
     

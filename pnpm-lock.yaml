@@ -9,7 +9,6 @@ specifiers:
   '@sveltejs/kit': next
   '@tailwindcss/aspect-ratio': ^0.3.0
   '@tailwindcss/typography': ^0.4.1
-  '@tomatrow/floaty-svelte-kit-theme': ^0.0.9
   '@types/lodash': ^4.14.177
   autoprefixer: ^10.4.0
   color: ^4.0.1
@@ -21,6 +20,7 @@ specifiers:
   micromark: ^3.0.9
   micromark-extension-gfm: ^2.0.0
   netlify-cms: ^2.10.179
+  optional-default-floaty-sveltekit-theme: ^0.0.10
   optional-default-site-kit: ^0.0.6
   postcss: ^8.4.1
   postcss-load-config: ^3.1.0
@@ -53,7 +53,6 @@ devDependencies:
   '@sveltejs/adapter-netlify': 1.0.0-next.35
   '@sveltejs/kit': 1.0.0-next.201_sass@1.43.5+svelte@3.44.2
   '@tailwindcss/typography': 0.4.1_tailwindcss@2.2.19
-  '@tomatrow/floaty-svelte-kit-theme': 0.0.9
   '@types/lodash': 4.14.177
   autoprefixer: 10.4.0_postcss@8.4.1
   color: 4.0.1
@@ -64,6 +63,7 @@ devDependencies:
   mdsvex: 0.9.8_svelte@3.44.2
   micromark: 3.0.9
   netlify-cms: 2.10.179
+  optional-default-floaty-sveltekit-theme: 0.0.10
   optional-default-site-kit: 0.0.6_svelte@3.44.2
   postcss: 8.4.1
   postcss-load-config: 3.1.0
@@ -495,10 +495,6 @@ packages:
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
       tailwindcss: 2.2.19_343577c3dd31b4e787406ab8c6576ff6
-    dev: true
-
-  /@tomatrow/floaty-svelte-kit-theme/0.0.9:
-    resolution: {integrity: sha512-9O94r3el7mMhaENh8jDCNK99ZOYpY+6q70K+EED8e5u8Tk65HrwkESiuzZZVpaWaO/KkTiBFBfKPdGy37RINVg==, tarball: download/@tomatrow/floaty-svelte-kit-theme/0.0.9/ddc5f2fe6e6d603160ac02647f1482623fd09fedaef9b70f49e6c1c9c3653f69}
     dev: true
 
   /@trysound/sax/0.2.0:
@@ -3985,6 +3981,10 @@ packages:
     resolution: {integrity: sha512-9A5pqGoQk49H6Vhjb9kPgAeeECfUDF6aIICbMDL23kDLStBn1MWk3YvcZ4xWF9CsSf6XEgvRLkXy4xof/56vVw==}
     dependencies:
       '@wry/context': 0.4.4
+    dev: true
+
+  /optional-default-floaty-sveltekit-theme/0.0.10:
+    resolution: {integrity: sha512-cgZIpBIZq2ndTfuUxLk7qBPZXxIH25x1YGZyj209UDwjJsffQT99PgnXa4x3zg8q4aaOUwfA1XCYNGRdfVZUoQ==}
     dev: true
 
   /optional-default-site-kit/0.0.6_svelte@3.44.2:
