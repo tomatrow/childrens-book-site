@@ -63,9 +63,7 @@ const site_url = import.meta.env.VITE_BASE_URL as string
 
 export const config = {
     backend: {
-        name: "github",
-        repo: "tomatrow/childrens-book-site",
-        use_graphql: true
+        name: "git-gateway"
     },
     local_backend: true,
     load_config_file: false,
