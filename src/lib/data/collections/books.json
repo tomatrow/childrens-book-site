@@ -1,19 +1,14 @@
 {
-    "handle": "books",
-    "title": "Books",
-    "products": [
-        {
-            "handle": "rhythm-of-war"
-        },
-        {
-            "handle": "oathbringer"
-        },
-        {
-            "handle": "the-way-of-kings"
-        },
-        {
-            "handle": "words-of-radiance"
-        }
-    ],
-    "body": "A short blub about the books collection."
+  "handle": "books",
+  "title": "Books",
+  "products": [
+    "the-way-of-kings",
+    "words-of-radiance",
+    "oathbringer",
+    "rhythm-of-war"
+  ],
+  "body": "A short blub about the books collection.",
+  "image": {
+    "src": "https://source.unsplash.com/featured/?books"
+  }
 }

@@ -5,7 +5,7 @@ export function mapExpandedPrice(price: Stripe.Price, cmsProducts: Product[]) {
     const stripeProduct = price.product as Stripe.Product
     price.product = stripeProduct.id
 
-    const cms = cmsProducts.find(product => product.id === stripeProduct.id)    
+    const cms = cmsProducts.find(product => product.id === stripeProduct.id)
 
     if (!cms) throw new Error(`Product id (${stripeProduct.id}) not found in cms`)
 

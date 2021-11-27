@@ -6,7 +6,7 @@
         return {
             status: 200, 
             props: {
-                products: await getProducts()
+                metaProducts: await getProducts()
             }
         }
     }
@@ -14,15 +14,23 @@
 
 <script lang="ts">
     import type { MetaProduct } from "$lib/types/models"
+    import { CollectionGrid, Hero, Typeset } from "$lib/components"
 
-    export let products: MetaProduct[]
+    export let metaProducts: MetaProduct[]
+    
+    $: items = metaProducts.map(({ product, cms }) => ({
+        title: product.name,
+        link: {
+            href: `/products/${cms.handle}`
+        },
+        image: {
+            src: product.images[0]
+        }
+    }))
 </script>
 
-<section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-    {#each products as { product, cms } (cms.id)}
-        <a href="/products/{cms.handle}" class="flex flex-col items-start bg-center bg-cover py-12" style={product.images.length > 0 ? `background-image: url(${product.images[0]})` : ''}>
-            <span>{product.name}</span>
-            <span>{product.description}</span>
-        </a>
-    {/each}
-</section>
+<Hero class="auto-shine flex justify-start items-end p-8" image={{ src: "/images/stormlight/rhythm-of-war-cover-yasen-alt.jpg" }}>
+    <Typeset heading="All Products" subheading="What we have to offer." class="mx-auto py-12 text-neutral-content" />
+</Hero>
+
+<CollectionGrid {items} />

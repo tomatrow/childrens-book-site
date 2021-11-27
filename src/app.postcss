@@ -7,5 +7,21 @@ body {
     font-family: "system-ui", sans-serif;
 }
 
+html {
+    min-height: 100vh;
+}
+
+:root {
+    --pixel-white: url(data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==);
+}
+
+.gradient-overlay {
+    background-size: auto, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.32)),
+        var(--gradient-background, var(--pixel-white));
+}
+
 @tailwind components;
 @tailwind utilities;

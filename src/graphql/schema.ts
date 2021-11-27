@@ -19,11 +19,10 @@ const resolvers: IExecutableSchemaDefinition["resolvers"] = {
     Query: {
         double(_, args) {
             console.log({ args })
-            return args.number * 2 
+            return args.number * 2
         }
     }
 }
-
 
 export const createSchema = async () => {
     return makeExecutableSchema({

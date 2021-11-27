@@ -20,8 +20,18 @@
     let open: boolean
 </script>
 
-<Button class="bg-red-500" on:click={() => flip = !flip}>Flip</Button>
-<Button class="bg-red-500" on:click={() => open = !open}>Open</Button>
+
+<Hero class="auto-shine flex justify-start items-end p-8" image={{ src: "/images/stormlight/rhythm-of-war-cover-yasen-alt.jpg" }}>
+    <Typeset
+        class="text-neutral-content"
+        heading="School's back."
+        subheading="Get caught up on our classic look"
+        >
+        <svelte:fragment slot="links">
+            <Link fill="primary" href="#">Shop the look</Link>
+        </svelte:fragment>
+    </Typeset>
+</Hero>
 
 <div class="p-16 flex flex-wrap gap-8">
     <div class="w-[40%] mx-auto transition duration-425" style={open ? 'transform: translate(50%, 0)' : ''}>
@@ -42,29 +52,3 @@
         </Book>
     </div>
 </div>
-
-<Hero class="auto-shine h-screen flex justify-start items-end p-8" image={{ src: "/images/stormlight/rhythm-of-war-cover-yasen-alt.jpg" }}>
-    <Typeset
-        class="text-neutral-content"
-        heading="School's back."
-        subheading="Get caught up on our classic look"
-        >
-        <svelte:fragment slot="links">
-            <Link fill="primary" href="#">Shop the look</Link>
-        </svelte:fragment>
-    </Typeset>
-</Hero>
-
-<Hero class="auto-shine h-screen flex justify-end items-end p-8" image={{ src: "/images/stormlight/rhythm-of-war-cover.jpg" }}>
-    <Typeset 
-        align="right"
-        class="text-neutral-content"
-        heading="Comfort wear"
-        subheading="New For 2021" 
-        flip>
-        <svelte:fragment slot="links">
-            <Link fill="secondary" href="#">Shop tops</Link>
-            <Link fill="secondary" href="#">Shop all</Link>
-        </svelte:fragment>
-    </Typeset>
-</Hero>

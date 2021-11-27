@@ -59,7 +59,9 @@ export const getProduct = async (handle: string) => {
     return await serverRequest<typeof Product.get>(getBase() + `/api/products/${handle}.json`)
 }
 
-export const getCheckoutSession = async (lineItems: Stripe.Checkout.SessionCreateParams.LineItem[]) => {
+export const getCheckoutSession = async (
+    lineItems: Stripe.Checkout.SessionCreateParams.LineItem[]
+) => {
     return await serverRequest<typeof Session.post>(getBase() + `/api/checkout/session.json`, {
         body: {
             lineItems

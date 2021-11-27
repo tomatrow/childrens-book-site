@@ -1,0 +1,62 @@
+{
+  "items": [
+    {
+      "label": "Collections",
+      "href": "/collections",
+      "items": [
+        {
+          "label": "Books",
+          "href": "/collections/books",
+          "src": "https://source.unsplash.com/featured/?books",
+          "image": {
+            "src": "https://source.unsplash.com/featured/?books"
+          },
+          "items": [
+            {
+              "label": "Words of Radiance",
+              "href": "/products/words-of-radiance"
+            },
+            {
+              "label": "Oathbringer",
+              "href": "/products/oathbringer"
+            }
+          ]
+        },
+        {
+          "label": "Cards",
+          "href": "/collections/cards",
+          "image": {
+            "src": "https://source.unsplash.com/featured/?cards"
+          },
+          "src": "https://source.unsplash.com/featured/?cards",
+          "items": [
+            {
+              "label": "Kharbranth",
+              "href": "/products/kharbranth"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Pages",
+      "href": "/pages",
+      "items": [
+        {
+          "label": "About",
+          "href": "/pages/about",
+          "image": {
+            "src": "https://source.unsplash.com/featured/?paper"
+          }
+        },
+        {
+          "label": "Contact",
+          "href": "/pages/contact",
+          "image": {
+            "src": "https://source.unsplash.com/featured/?buildings"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -14,13 +14,9 @@
 
 <script lang="ts">
     import type { Post } from "$lib/types/models"
+    import { Article } from "$lib/components"
 
     export let post: Post
 </script>
 
-<section class="flex flex-col">
-    <h1>{post.title}</h1>
-    <div>
-        {@html post.body}
-    </div>
-</section> 
+<Article title={post.title} image={post.image} body={post.body} />

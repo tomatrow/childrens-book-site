@@ -6,9 +6,8 @@ import { stripe } from "$lib/common/stripe"
 import { mapExpandedPrice } from "$lib/common/utility"
 import { getResource } from "../_utility"
 
-
 export const get: RequestHandler<Locals, unknown, Typify<MetaProduct>> = async ({ params }) => {
-    const cmsProduct = await getResource("products", params.handle) as Product
+    const cmsProduct = (await getResource("products", params.handle)) as Product
 
     const { data } = await stripe.prices.list({
         expand: ["data.product"],

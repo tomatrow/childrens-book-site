@@ -11,7 +11,7 @@ export const get: RequestHandler<Locals, unknown, Typify<MetaProduct[]>> = async
         expand: ["data.product"],
         limit: 100
     })
-    
+
     const cmsProducts = await getResources("products")
 
     return {

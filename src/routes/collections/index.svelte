@@ -14,14 +14,21 @@
 
 <script lang="ts">
     import type { Collection } from "$lib/types/models"
+    import { CollectionGrid, Hero, Typeset } from "$lib/components"
 
     export let collections: Collection[]
+
+    $: items = collections.map(({ handle, image, title }) => ({
+        title,
+        link: {
+            href: `/collections/${handle}`
+        },
+        image
+    }))
 </script>
 
-<section class="flex flex-col">
-    <h1>All Collections</h1>
-    
-    {#each collections as {title, handle}}
-        <a href="/collections/{handle}">{title}</a>
-    {/each}
-</section> 
+<Hero class="auto-shine p-8" image={{ src: "/images/stormlight/rhythm-of-war-cover-yasen-alt.jpg" }}>
+    <Typeset heading="All Collections" subheading="What we have to offer." class="mx-auto py-12 text-neutral-content" />
+</Hero>
+
+<CollectionGrid {items} />

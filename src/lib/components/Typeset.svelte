@@ -54,7 +54,7 @@
         <div class="overflow-hidden">
             {#if intersecting}
                 <div in:fly={flip ? second : first}>
-                    <Heading class="text-7xl font-bold tracking-ultra">
+                    <Heading class="text-7xl font-bold tracking-ultra py-4">
                         <slot name="heading" {heading}>
                             {heading}
                         </slot>
@@ -78,7 +78,7 @@
         {#if intersecting && ($$slots.links || links.length > 0)}
             <div class="flex gap-4" in:fade={third}>
                 <slot name="links" {links} {color}>
-                    {#each links as link, index}
+                    {#each links as link}
                         <Link fill={color} {...link}/>
                     {/each}
                 </slot>

@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "label": "Pages",
+      "href": "/pages",
+      "items": [
+        {
+          "label": "Contact",
+          "href": "/pages/contact"
+        }
+      ]
+    }
+  ]
+}

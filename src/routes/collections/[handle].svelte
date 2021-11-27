@@ -16,25 +16,31 @@
 
 <script lang="ts">
     import type { Collection } from "$lib/types/models"
+    import { CollectionGrid, Hero, Typeset } from "$lib/components"
 
     export let collection: Collection
     export let products: MetaProduct[]
     
-    console.log({ collection, products })
-    
     function findProduct(handle: string) {
         return products.find(product => product.cms.handle === handle)
     }
+
+    $: items = collection.products.map(handle => {
+        const { product } = findProduct(handle)
+        return {
+            title: product.name,
+            link: {
+                href: "/products/" + handle
+            },
+            image: {
+                src: product.images[0]
+            }
+        }
+    })
 </script>
 
-<section class="flex flex-col">
-    <h1>{collection.title}</h1>
-    <div class="prose">
-        {@html collection.body}
-    </div>
-    <div>
-        {#each collection.products.map(x => x.handle).map(findProduct) as { product, cms }}
-            <a href="/products/{cms.handle}">{product.name}</a>
-        {/each}
-    </div>
-</section> 
+<Hero class="auto-shine p-8" image={{ src: "/images/stormlight/rhythm-of-war-cover-yasen-alt.jpg" }}>
+    <Typeset heading={collection.title} class="mx-auto py-12 text-neutral-content" />
+</Hero>
+
+<CollectionGrid {items} />

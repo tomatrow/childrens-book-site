@@ -14,13 +14,9 @@
 
 <script lang="ts">
     import type { Policy } from "$lib/types/models"
+    import { Article } from "$lib/components"
 
     export let policy: Policy
 </script>
 
-<section class="flex flex-col">
-    <h1>{policy.title}</h1>
-    <div>
-        {@html policy.body}
-    </div>
-</section> 
+<Article title={policy.title}  body={policy.body} />

@@ -16,15 +16,18 @@
 
 <script lang="ts">
     import type { MetaProduct } from "$lib/types/models"
-    import { micromark } from 'micromark'
     import { add } from "$lib/common/cart"
     import { Button } from "$lib/components"
+    import { renderMarkdown } from "$lib/functions/renderMarkdown"
 
     export let metaProduct: MetaProduct
 </script>
 
-<Button on:click={() => add(metaProduct.price.id)}>Add to Cart</Button>
-<h1>{metaProduct.product.name}</h1>
-<div class="prose">
-    {@html micromark(metaProduct.cms.body)}
+<div class="prose container mx-auto">
+    <Button on:click={() => add(metaProduct.price.id)}>Add to Cart</Button>
+    <h1>{metaProduct.product.name}</h1>
+    {#each metaProduct.product.images as src}
+        <img alt="" {src} />
+    {/each}
+    {@html renderMarkdown(metaProduct.cms.body)}
 </div>
