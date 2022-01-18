@@ -11,7 +11,7 @@ specifiers:
   '@sveltejs/adapter-netlify': 1.0.0-next.36
   '@sveltejs/kit': 1.0.0-next.203
   '@tailwindcss/aspect-ratio': latest
-  '@tailwindcss/typography': latest
+  '@tailwindcss/typography': ^0.5.0-alpha.3
   '@types/drift-zoom': ^1.5.0
   '@types/lodash': ^4.14.178
   autoprefixer: ^10.4.0
@@ -60,7 +60,7 @@ devDependencies:
   '@sveltejs/adapter-netlify': 1.0.0-next.36
   '@sveltejs/kit': 1.0.0-next.203_sass@1.45.1+svelte@3.44.3
   '@tailwindcss/aspect-ratio': 0.4.0_tailwindcss@3.0.15
-  '@tailwindcss/typography': 0.5.0_tailwindcss@3.0.15
+  '@tailwindcss/typography': 0.5.0-alpha.3_tailwindcss@3.0.15
   '@types/drift-zoom': 1.5.0
   '@types/lodash': 4.14.178
   autoprefixer: 10.4.0_postcss@8.4.5
@@ -528,8 +528,8 @@ packages:
       tailwindcss: 3.0.15_16a290f6d0e3717bf6d2667234aebd30
     dev: true
 
-  /@tailwindcss/typography/0.5.0_tailwindcss@3.0.15:
-    resolution: {integrity: sha512-1p/3C6C+JJziS/ghtG8ACYalbA2SyLJY27Pm33cVTlAoY6VQ7zfm2H64cPxUMBkVIlWXTtWHhZcZJPobMRmQAA==}
+  /@tailwindcss/typography/0.5.0-alpha.3_tailwindcss@3.0.15:
+    resolution: {integrity: sha512-ySYrwcf7SaLVL7XBH61euPX4xoAytD4HVvfE4XsdExQmxxiNhWNVkvxhtP+RAbk6n3A0m0a+p3W25E19YiGj2A==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1 || insiders'
     dependencies:
