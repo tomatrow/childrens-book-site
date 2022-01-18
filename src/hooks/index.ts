@@ -7,9 +7,8 @@ import type { Locals } from "./index.type"
 // } from "optional-default-site-kit/functions/formatRequestResponse"
 import { installFetch } from "optional-default-site-kit/functions/request"
 
-installFetch(fetch)
-
 const handleLogging: Handle = async ({ request, resolve }) => {
+    installFetch(fetch)
     // const start = performance.now()
     const response = await resolve(request)
     // const elapsed = performance.now() - start

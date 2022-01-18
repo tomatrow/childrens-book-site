@@ -25,12 +25,11 @@
         return products.find(product => product.cms.handle === handle)
     }
 
-    $: items = collection.products.map(handle => {
-        const { product } = findProduct(handle)
+    $: items = collection.products.map(findProduct).filter(Boolean).map(({ product, cms }) => {
         return {
             title: product.name,
             link: {
-                href: "/products/" + handle
+                href: "/products/" + cms.handle
             },
             image: {
                 src: product.images[0]
