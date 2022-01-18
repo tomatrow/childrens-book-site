@@ -1,5 +1,13 @@
 {
     "id": "prod_KG4i8Ig15Cq92C",
     "handle": "the-tower",
-    "body": ""
+    "body": "Tada",
+    "images": [
+        {
+            "src": "https://source.unsplash.com/featured/?tower"
+        },
+        {
+            "src": "https://source.unsplash.com/featured/?dessert"
+        }
+    ]
 }

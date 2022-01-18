@@ -16,7 +16,11 @@ const safelist = [
 const config = {
     mode: "jit",
     purge: {
-        content: ["./src/**/*.{html,js,svelte,ts}"],
+        content: [
+            "./src/**/*.{html,js,svelte,ts}",
+            "./node_modules/3d-book-svelte/**/*.{html,js,svelte,ts,css}",
+            "./node_modules/optional-default-floaty-sveltekit-theme/**/*.{html,js,svelte,ts,css}"
+        ],
         safelist
     },
     theme: {

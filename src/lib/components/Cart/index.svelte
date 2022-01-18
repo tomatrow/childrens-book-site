@@ -7,6 +7,7 @@
     import { build } from "optional-default-site-kit/functions/build"
     import LineItemRow from "./_LineItemRow.svelte"
     import CheckoutButton from "./_CheckoutButton.svelte"
+    import { formatMoney } from "optional-default-site-kit/functions/formatMoney"
 
     export let metaProducts: MetaProduct[]
     export let visible = false
@@ -34,7 +35,7 @@
             <div class="self-end mt-auto w-full">
                 <div class="flex justify-between p-4">
                     <span class="uppercase font-thin">Subtotal</span>
-                    <span>${subtotal / 100}</span>
+                    <span>{formatMoney(subtotal)}</span>
                 </div>
                 <CheckoutButton />
             </div>

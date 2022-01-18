@@ -1,5 +1,10 @@
 {
     "id": "prod_KG4DM35yPmUYXv",
     "handle": "rhythm-of-war",
-    "body": ""
+    "body": "War",
+    "images": [
+        {
+            "src": "https://source.unsplash.com/featured/?war"
+        }
+    ]
 }

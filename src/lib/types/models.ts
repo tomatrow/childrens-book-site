@@ -30,6 +30,7 @@ export interface Route {
 
 export interface Product extends Route {
     id: string
+    images: Image[]
 }
 
 export interface Page extends Route {

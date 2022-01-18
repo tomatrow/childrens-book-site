@@ -1,10 +1,14 @@
 import { persist, localStorage } from "@macfja/svelte-persistent-store"
 import type { Stripe } from "stripe"
-import { writable, get } from "svelte/store"
+import { writable, derived, get } from "svelte/store"
 
 export type LineItem = Stripe.Checkout.SessionCreateParams.LineItem
 
 export const cart = persist(writable<LineItem[]>([]), localStorage(), "book-site-cart")
+
+export const size = derived(cart, $cart =>
+    $cart.map(item => item.quantity).reduce((a, b) => a + b, 0)
+)
 
 function getItem(price: string) {
     return get(cart).find(item => item.price === price)

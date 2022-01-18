@@ -1,5 +1,10 @@
 {
     "id": "prod_KG4CIhuNLuG5Ua",
     "handle": "oathbringer",
-    "body": ""
+    "body": "YES",
+    "images": [
+        {
+            "src": "https://source.unsplash.com/featured/?oath"
+        }
+    ]
 }

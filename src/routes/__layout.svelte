@@ -1,5 +1,4 @@
 <script lang="ts" context="module">
-    import "optional-default-floaty-sveltekit-theme/styles.css"
     import "../app.postcss"    
     import { installFetch } from "optional-default-site-kit/functions/request"
     import type { Load } from "@sveltejs/kit"
@@ -28,6 +27,8 @@
     import { items as secondaryMenu } from "$lib/data/secondaryMenu.json"
     import netlifyIdentity from "netlify-identity-widget"
     import { browser } from "$app/env"
+    import * as Icons from "$lib/common/icons"
+    import { size } from "$lib/common/cart"
     
     export let metaProducts: MetaProduct[]
 
@@ -60,15 +61,18 @@
             >
         </svelte:fragment>
     </Primary>
-    <Button on:click={() => visible = true}>
-        Cart
+    <Button class="flex items-center gap-1" on:click={() => visible = true}>
+        {#if $size > 0}
+            {$size}
+        {/if}
+        <Icons.Cart class="hover:text-primary" />
     </Button>
     <button class="hide-if-desktop ml-auto text-black" type="button" on:click={() => (open = !open)}>
-        Menu
+        <Icons.Menu />
     </button>
 </Navbar>
 
-<Main class="flex flex-col">
+<Main class="flex flex-col h-full">
     <slot />
     <footer
         class="mt-auto flex flex-col sm:flex-row items-center sm:justify-around gap-4 sm:gap-8 p-4"

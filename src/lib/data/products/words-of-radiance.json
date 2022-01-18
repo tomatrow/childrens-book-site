@@ -1,5 +1,13 @@
 {
     "id": "prod_KG4ARUSu6pkc4e",
     "handle": "words-of-radiance",
-    "body": ""
+    "body": "ddd",
+    "images": [
+        {
+            "src": "https://source.unsplash.com/featured/?knight"
+        },
+        {
+            "src": "https://source.unsplash.com/featured/?books"
+        }
+    ]
 }

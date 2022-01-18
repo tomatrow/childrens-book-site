@@ -17,12 +17,6 @@ const config = {
             onError: "continue"
         },
         vite: {
-            ssr: {
-                noExternal: ["micromark-extension-gfm"]
-            },
-            optimizeDeps: {
-                exclude: ["micromark-extension-gfm"]
-            },
             plugins: [Icons({ compiler: "svelte", autoInstall: true })]
         }
     }

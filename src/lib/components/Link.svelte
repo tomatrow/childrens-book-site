@@ -1,21 +1,6 @@
 <script context="module" lang="ts">
     import { buildClasses } from "$lib/actions/classes"
     import Colors from "$lib/data/colors.json"
-    import type { Color } from "$lib/types/colors"
-    
-    
-    /*  attributes 
-        - fill?: Color
-            - background color 
-        - hollow?: Color
-            - dimmed color border
-        - line?: Color
-            - line of color below 
-        - accent?: boolean
-            - filled => shine + dimmed bg color  
-            - hollow => full color border 
-            - line => add track with dimmed color
-    */
 
     export interface ClassesConfig {
         hollow?: ColorKey
