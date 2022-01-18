@@ -13,16 +13,16 @@ const safelist = [
     ...prefixColors("text-")
 ]
 
+fs.writeFileSync("./safelist.txt", JSON.stringify(safelist))
+
 const config = {
     mode: "jit",
-    purge: {
-        content: [
-            "./src/**/*.{html,js,svelte,ts}",
-            "./node_modules/3d-book-svelte/**/*.{html,js,svelte,ts,css}",
-            "./node_modules/optional-default-floaty-sveltekit-theme/**/*.{html,js,svelte,ts,css}"
-        ],
-        safelist
-    },
+    content: [
+        "./src/**/*.{html,js,svelte,ts}",
+        "./node_modules/3d-book-svelte/**/*.{html,js,svelte,ts,css}",
+        "./node_modules/optional-default-floaty-sveltekit-theme/**/*.{html,js,svelte,ts,css}",
+        "./safelist.txt"
+    ],
     theme: {
         extend: {
             colors,
