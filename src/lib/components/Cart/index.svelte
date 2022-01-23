@@ -13,7 +13,8 @@
     export let visible = false
 
     function cost({ quantity, price }: LineItem) {
-        return metaProducts.find(item => item.price.id === price).price.unit_amount * quantity
+        const amount = metaProducts.find(item => item.price.id === price)?.price.unit_amount ?? 0
+        return amount * quantity
     }
 
     $: subtotal = $cart.map(cost).reduce((a,b) => a + b, 0)

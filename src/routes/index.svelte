@@ -21,7 +21,7 @@
 </script>
 
 <script lang="ts">
-    import { Button, Hero, Typeset, Link } from "$lib/components"
+    import { Hero, Typeset, Link } from "$lib/components"
     import { Book, Page } from "3d-book-svelte"
 
     let flip: boolean

@@ -7,7 +7,13 @@
     export const load: Load = async ({ fetch }) => {
         installFetch(fetch)
         
-        const [metaProducts] = await Promise.all([getProducts()])
+        let metaProducts 
+        
+        try {
+            metaProducts = await getProducts()
+        } catch (error) {
+            console.error(error)
+        }
         
         return { 
             status: 200,
@@ -117,6 +123,14 @@
 
     .hide-if-mobile {
         display: none;
+    }
+    
+    main {
+        background-image: url(/uploads/night-sky.webp);
+        color: white;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     @screen sm {
