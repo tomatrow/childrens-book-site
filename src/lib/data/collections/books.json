@@ -1,9 +1,14 @@
 {
-    "handle": "books",
-    "title": "Books",
-    "products": ["the-way-of-kings", "words-of-radiance", "oathbringer", "rhythm-of-war"],
-    "body": "A short blub about the books collection.",
-    "image": {
-        "src": "https://source.unsplash.com/featured/?books"
-    }
+  "handle": "books",
+  "title": "Books",
+  "products": [
+    "softcover-large-book",
+    "hardcover-book",
+    "coloring-book",
+    "softcover-small-book"
+  ],
+  "body": "A short blub about the books collection.",
+  "image": {
+    "src": "https://source.unsplash.com/featured/?books"
+  }
 }

@@ -1,0 +1,14 @@
+{
+  "handle": "all",
+  "title": "All Products",
+  "products": [
+    "hardcover-book",
+    "softcover-small-book",
+    "softcover-large-book",
+    "coloring-book"
+  ],
+  "image": {
+    "src": "/favicon.ico"
+  },
+  "body": "Hello to the world"
+}

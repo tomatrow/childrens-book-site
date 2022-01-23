@@ -1,16 +1,22 @@
 {
-    "id": "prod_KG4RdUVTlJYOvR",
-    "handle": "the-shattered-plains",
-    "body": "dddd",
-    "images": [
-        {
-            "src": "https://source.unsplash.com/featured/?plains"
-        },
-        {
-            "src": "https://source.unsplash.com/featured/?hills"
-        },
-        {
-            "src": "https://source.unsplash.com/featured/?fields"
-        }
-    ]
+  "id": "prod_KG4RdUVTlJYOvR",
+  "handle": "coloring-book",
+  "body": "\n\n***A perfect gift for Ballet lovers of all kinds!***\n\n**These beautiful and inspiring images feature dancing characters based on the Christmas book The First Noel: A Tale of Friendship, by Clare Johnson and Nicole Thomas. Including quotes from the story and pages not seen in the original book, adults and children alike will love coloring these whimsical dancing characters!**",
+  "images": [
+    {
+      "src": "https://source.unsplash.com/featured/?plains",
+      "href": "/uploads/coloring-book.jpg",
+      "label": "Christmas coloring book friendship coloring book the first noel coloring book"
+    },
+    {
+      "src": "https://source.unsplash.com/featured/?hills",
+      "href": "/uploads/coloring-book-back.jpg",
+      "label": "ballet coloring book dance lovers"
+    },
+    {
+      "src": "https://source.unsplash.com/featured/?fields",
+      "href": "/uploads/img_5082-1-.jpg",
+      "label": "coloring book companion coloring book set bible coloring book"
+    }
+  ]
 }
