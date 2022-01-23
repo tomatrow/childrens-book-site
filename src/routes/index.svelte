@@ -3,10 +3,18 @@
     import type { Load } from "@sveltejs/kit"
 
     export const load: Load = async () => {
+        let products = []
+
+        try {
+            products = await getProducts()
+        } catch (error) {
+            console.error(error)
+        }
+
         return {
             status: 200, 
             props: {
-                products: await getProducts()
+                products
             }
         }
     }

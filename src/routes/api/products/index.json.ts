@@ -14,8 +14,15 @@ export const get: RequestHandler<Locals, unknown, Typify<MetaProduct[]>> = async
 
     const cmsProducts = await getResources("products")
 
+    let items: MetaProduct[] = []
+    try {
+        items = data.map(price => mapExpandedPrice(price, cmsProducts))
+    } catch (error) {
+        console.error(error)
+    }
+
     return {
         status: 200,
-        body: data.map(price => mapExpandedPrice(price, cmsProducts))
+        body: items
     }
 }
