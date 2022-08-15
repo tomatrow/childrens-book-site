@@ -8,12 +8,14 @@
     import LineItemRow from "./_LineItemRow.svelte"
     import CheckoutButton from "./_CheckoutButton.svelte"
     import { formatMoney } from "optional-default-site-kit/functions/formatMoney"
+	import { isNil } from "lodash"
 
     export let metaProducts: MetaProduct[]
     export let visible = false
 
     function cost({ quantity, price }: LineItem) {
-        return metaProducts.find(item => item.price.id === price).price.unit_amount * quantity
+		const amount = metaProducts.find(item => item.price.id === price)?.price.unit_amount
+        return isNil(amount) ? null : amount * quantity
     }
 
     $: subtotal = $cart.map(cost).reduce((a,b) => a + b, 0)
