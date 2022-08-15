@@ -6,3 +6,4 @@ node_modules
 .netlify/functions-internal
 .env*.local
 /safelist.txt
+.nova
