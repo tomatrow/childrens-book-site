@@ -22,7 +22,7 @@
 
 <script lang="ts">
     import { Button, Hero, Typeset, Link } from "$lib/components"
-    import { Book, Page } from "3d-book-svelte"
+    // import { Book, Page } from "3d-book-svelte"
 
     let flip: boolean
     let open: boolean
@@ -43,7 +43,7 @@
 
 <div class="p-16 flex flex-wrap gap-8">
     <div class="w-[40%] mx-auto transition duration-425" style={open ? 'transform: translate(50%, 0)' : ''}>
-        <Book class="relative" bind:flip bind:open --aspect-h={1080} --aspect-w={1400} --thickness="3rem">
+        <!-- <Book class="relative" bind:flip bind:open --aspect-h={1080} --aspect-w={1400} --thickness="3rem">
             <img alt="" slot="front-cover" src="/images/the-first-noel/front-cover.webp" />
             <img alt="" slot="front-endpaper" src="/images/the-first-noel/0010.jpg" />
             {#each [[11,12], [13,14], [15,16], [17,18]] as [front, back]}
@@ -57,6 +57,6 @@
         	<div slot="spine" class="bg-[#142642] text-[#eea905] flex items-center justify-center ">
         		The First Noel
         	</div>
-        </Book>
+        </Book> -->
     </div>
 </div>

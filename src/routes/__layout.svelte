@@ -5,10 +5,17 @@
     import { getProducts } from "$lib/common/api"
 
     export const load: Load = async ({ fetch }) => {
-        installFetch(fetch)
+        
+		
+		
+		installFetch(fetch)
+		
+		
+		console.log("before")
         
         const [metaProducts] = await Promise.all([getProducts()])
         
+		console.log("after")
         return { 
             status: 200,
             props: {
@@ -25,7 +32,6 @@
     import { Main, Primary, PrimaryCompact, Secondary, Navbar } from "optional-default-floaty-sveltekit-theme"
     import { items as primaryMenu } from "$lib/data/primaryMenu.json"
     import { items as secondaryMenu } from "$lib/data/secondaryMenu.json"
-    import netlifyIdentity from "netlify-identity-widget"
     import { browser } from "$app/env"
     import * as Icons from "$lib/common/icons"
     import { size } from "$lib/common/cart"
@@ -36,7 +42,12 @@
     let open = false
     
     if (browser) {
-        netlifyIdentity.init()
+		import("netlify-identity-widget").then(module => {
+			console.log({
+				module
+			})
+			// netlifyIdentity.init()
+		})
     }
 </script>
 

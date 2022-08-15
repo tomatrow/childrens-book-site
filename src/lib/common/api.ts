@@ -1,4 +1,4 @@
-import { serverRequest } from "optional-default-site-kit/functions/request"
+import { request } from "optional-default-site-kit/functions/request"
 import type * as Product from "src/routes/api/products/[handle].json"
 import type * as Products from "src/routes/api/products/index.json"
 import type * as Resource from "src/routes/api/[resource]/[handle].json"
@@ -12,11 +12,11 @@ export const getBase = () => {
 }
 
 const getResource = async (resource: string, handle: string) => {
-    return await serverRequest<typeof Resource.get>(getBase() + `/api/${resource}/${handle}.json`)
+    return await request<typeof Resource.get>(getBase() + `/api/${resource}/${handle}.json`)
 }
 
 const getResources = async (resource: string) => {
-    return await serverRequest<typeof Resources.get>(getBase() + `/api/${resource}.json`)
+    return await request<typeof Resources.get>(getBase() + `/api/${resource}.json`)
 }
 
 export const getPage = async (handle: string) => {
@@ -52,17 +52,21 @@ export const getPolicies = async () => {
 }
 
 export const getProducts = async () => {
-    return await serverRequest<typeof Products.get>(getBase() + "/api/products.json")
+	try {
+    	return await request<typeof Products.get>(getBase() + "/api/products.json")
+	} catch (error) {
+		console.error(error)
+	}
 }
 
 export const getProduct = async (handle: string) => {
-    return await serverRequest<typeof Product.get>(getBase() + `/api/products/${handle}.json`)
+    return await request<typeof Product.get>(getBase() + `/api/products/${handle}.json`)
 }
 
 export const getCheckoutSession = async (
     lineItems: Stripe.Checkout.SessionCreateParams.LineItem[]
 ) => {
-    return await serverRequest<typeof Session.post>(getBase() + `/api/checkout/session.json`, {
+    return await request<typeof Session.post>(getBase() + `/api/checkout/session.json`, {
         body: {
             lineItems
         }

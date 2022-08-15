@@ -1,12 +1,22 @@
 <script lang="ts" context="module">
     import type { Load } from "@sveltejs/kit"
     import { getPages } from "$lib/common/api"
+	import { delay } from "optional-default-site-kit/functions/delay"
 
     export const load: Load = async () => {
+		console.log("pre pages")
+		await delay(500)
+		console.log("after delay")
+		const pages = await getPages()
+
+		console.log({
+			pages 
+		})
+
         return {
             status: 200, 
             props: {
-                pages: await getPages()
+                pages
             }
         }
     }

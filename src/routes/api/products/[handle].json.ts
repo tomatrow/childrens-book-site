@@ -1,12 +1,12 @@
-import type { RequestHandler } from "@sveltejs/kit"
-import type { Locals } from "$lib/types/kit"
+// import type { RequestHandler } from "@sveltejs/kit"
 import type { Typify } from "$lib/types/utility"
 import type { MetaProduct, Product } from "$lib/types/models"
 import { stripe } from "$lib/common/stripe"
 import { mapExpandedPrice } from "$lib/common/utility"
 import { getResource } from "../_utility"
+import type { RequestHandler } from "./__types/[handle]"
 
-export const get: RequestHandler<Locals, unknown, Typify<MetaProduct>> = async ({ params }) => {
+export const GET: RequestHandler = async ({ params }) => {
     const cmsProduct = (await getResource("products", params.handle)) as Product
 
     const { data } = await stripe.prices.list({
