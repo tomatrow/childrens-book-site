@@ -9,8 +9,7 @@ const config = {
     kit: {
         adapter: netlify(),
         prerender: {
-            crawl: true,
-            enabled: true,
+            enabled: false,
             onError: "continue"
         }
     }
