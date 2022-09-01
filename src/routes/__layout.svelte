@@ -3,6 +3,7 @@
     import { installFetch } from "optional-default-site-kit/functions/request"
     import type { Load } from "@sveltejs/kit"
     import { getProducts } from "$lib/common/api"
+    import Logo from "$lib/components/Logo.svelte"
 
     export const load: Load = async ({ fetch }) => {
         
@@ -54,7 +55,9 @@
 <Cart bind:visible {metaProducts} />
 
 <Navbar class="gap-4 p-4 bg-white z-[200] shadow-lg">
-    <a href="/" class="p-4">LOGO</a>
+    <a href="/" class="p-4">
+        <Logo />
+    </a>
 
     <Primary class="mx-auto gap-4 " menu={primaryMenu} megaClass="bg-white shadow-xl gap-4 p-4">
         <svelte:fragment slot="link" let:href let:label let:level let:compact>
@@ -88,7 +91,9 @@
     <footer
         class="mt-auto flex flex-col sm:flex-row items-center sm:justify-around gap-4 sm:gap-8 p-4"
     >
-        <a href="/" class="p-8">LOGO</a>
+        <a href="/" class="p-8">
+            <Logo />
+        </a>
         <Secondary menu={secondaryMenu} class="self-stretch sm:mx-auto sm:max-w-lg sm:w-full">
             <svelte:fragment slot="link" let:href let:label let:level let:compact>
                 <a
